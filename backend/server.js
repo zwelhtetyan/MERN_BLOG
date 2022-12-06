@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const { default: mongoose } = require('mongoose');
-const workoutRoutes = require('./router/workout');
+const blogRoutes = require('./router/blog');
 
 //express app
 const app = express();
@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 //routes
-app.use(workoutRoutes);
+app.use(blogRoutes);
 
 // connect to database
 const connect = async () => {
