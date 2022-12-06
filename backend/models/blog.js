@@ -8,8 +8,9 @@ const blogSchema = new Schema(
          type: String,
          required: true,
       },
-      subtitle: {
-         type: String,
+      tags: {
+         type: [{ tagName: String, color: String }],
+         validate: (tags) => Array.isArray(tags) && tags.length > 0,
       },
       body: {
          type: String,
