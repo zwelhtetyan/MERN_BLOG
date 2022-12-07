@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const blogRoutes = require('./router/blog');
@@ -8,9 +9,10 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use(cors());
 
 //routes
-app.use(blogRoutes);
+app.use('/blogs', blogRoutes);
 
 // connect to database
 const connect = async () => {
