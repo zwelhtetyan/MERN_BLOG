@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+   --mainBg: #f0e7db;
+   --headerBg: #ffffff47;
+   --borderColor: #d7d7d7;
+   --textColor: #424242;
+   --primary: #4bb790;
+   --cardBg: '#ffffff';
+}
+
+.dark {
+   --mainBg: #202023;
+   --headerBg: #00000069;
+   --borderColor: #3e3b3b;
+   --textColor: #dddddd;
+   --primary: #69dfb5;
+   --cardBg: #363535;
+}
+
+@layer utilities {
+   .lineClamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+   }
+}
