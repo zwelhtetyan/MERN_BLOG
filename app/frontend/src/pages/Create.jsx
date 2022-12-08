@@ -27,7 +27,9 @@ const Create = () => {
    const [selectedTags, setSelectedTags] = useState([]);
 
    // refs
+   const titleRef = useRef(null);
    const tagRef = useRef(null);
+   const bodyRef = useRef(null);
 
    // hooks
    const { isOutside: outsideOfSgtInput, ref: sgtInputRef } = useClickOutside();
@@ -92,10 +94,26 @@ const Create = () => {
       setSgtBoxTopPx(topPx);
    }, [selectedTags.length]);
 
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      const title = titleRef.current.value;
+      const tags = selectedTags;
+      const body = bodyRef.current.value;
+
+      const newBlog = { title, tags, body };
+
+      console.log(newBlog);
+   };
+
    return (
       <div className='max-w-xl w-full mx-auto'>
-         <form action='' className='w-full mt-5 relative'>
+         <form
+            action=''
+            className='w-full mt-5 relative'
+            onSubmit={handleSubmit}
+         >
             <input
+               ref={titleRef}
                type='text'
                name='title'
                className={`bg-cardBg w-full h-10 rounded-md py-2 px-4 ${focusOutlineStyle} mb-3`}
@@ -134,6 +152,7 @@ const Create = () => {
             </ul>
 
             <textarea
+               ref={bodyRef}
                type='text'
                name='author'
                className={`bg-cardBg w-full h-24 rounded-md py-2 px-4 ${focusOutlineStyle}`}
