@@ -12,7 +12,7 @@ const RootLayout = () => {
       >
          <Header theme={theme} themeToggler={themeToggler} />
 
-         <main className='pt-6 pb-12 px-4 w-full max-w-7xl mx-auto'>
+         <main className='pt-6 pb-12 px-3 xs:px-4 w-full max-w-7xl mx-auto'>
             <Outlet />
          </main>
 

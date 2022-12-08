@@ -12,7 +12,7 @@ const Home = () => {
    console.log(blogs);
 
    return (
-      <div className='grid xs:grid-cols-autoFit300 gap-4 xs:gap-6'>
+      <div className='grid xs:grid-cols-autoFit300 gap-4'>
          {blogs.map((blog) => (
             <BlogCard {...blog} key={blog._id} />
          ))}

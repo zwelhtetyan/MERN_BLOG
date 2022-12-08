@@ -10,9 +10,9 @@ const Tag = ({ tagName }) => {
    );
 };
 
-const BlogCard = ({ tags, title, body, author, createdAt }) => {
+const BlogCard = ({ tags, title, body, createdAt }) => {
    return (
-      <article className='bg-cardBg rounded-md overflow-hidden shadow-boxShadow1 hover:shadow-md cursor-pointer'>
+      <article className='bg-cardBg rounded-md overflow-hidden shadow-sm hover:shadow-md cursor-pointer'>
          <img src={cover} alt='cover_img' />
          <div className='p-4'>
             <div className='flex gap-2 mb-3'>
@@ -30,7 +30,7 @@ const BlogCard = ({ tags, title, body, author, createdAt }) => {
                   className='w-9 h-9 rounded-full'
                />
                <div className='leading-3'>
-                  <h5 className='text-sm'>{author}</h5>
+                  <h5 className='text-sm'>Zwel</h5>
                   <time className='text-xs'>
                      {formatDistanceToNow(new Date(createdAt), {
                         addSuffix: true,

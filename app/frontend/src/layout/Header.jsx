@@ -5,7 +5,7 @@ const linkStyles = (isActive) =>
 
 const Header = ({ theme, themeToggler }) => {
    return (
-      <header className='bg-headerBg backdrop-blur-md sticky top-0 py-2 px-4 xs:px-8 sm:px-12 shadow-sm'>
+      <header className='bg-headerBg backdrop-blur-md sticky top-0 py-2 px-4 xs:px-8 sm:px-12 shadow-sm z-10'>
          <div className='flex items-center justify-between flex-wrap'>
             <NavLink to='/' className='mr-4'>
                <img src='logo.svg' alt='logo' width='75px' />
