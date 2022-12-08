@@ -1,30 +1,27 @@
+import { formatDistanceToNow } from 'date-fns';
 import cover from '../assets/cover.jpg';
 import z from '../assets/z.jpeg';
 
-const Tag = ({ tagName, color }) => (
-   //    <div className={`text-[${color}]`}>{tagName}</div>
-   <div className='bg-blue-600 px-2 rounded-md'>nature</div>
-);
-
-const BlogCard = () => {
+const Tag = ({ tagName }) => {
    return (
-      <article className='bg-cardBg rounded-md overflow-hidden shadow-sm hover:shadow-md cursor-pointer'>
+      <div className='px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'>
+         {tagName}
+      </div>
+   );
+};
+
+const BlogCard = ({ tags, title, body, author, createdAt }) => {
+   return (
+      <article className='bg-cardBg rounded-md overflow-hidden shadow-boxShadow1 hover:shadow-md cursor-pointer'>
          <img src={cover} alt='cover_img' />
          <div className='p-4'>
             <div className='flex gap-2 mb-3'>
-               {[1, 2, 3].map((n) => (
-                  <Tag key={n} />
+               {tags.map((tag) => (
+                  <Tag tagName={tag} key={tag} />
                ))}
             </div>
-            <h2 className='font-bold text-xl lineClamp-2'>
-               This is my very first blog.
-            </h2>
-            <p className='lineClamp-2'>
-               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-               Delectus officiis numquam placeat similique impedit tempore
-               aperiam nostrum asperiores facere, debitis atque consequatur,
-               reiciendis provident aliquam maiores quasi totam exercitationem!
-            </p>
+            <h2 className='font-bold text-xl lineClamp-2'>{title}</h2>
+            <p className='lineClamp-2'>{body}</p>
 
             <div className='mt-3 flex gap-2 items-center'>
                <img
@@ -33,8 +30,12 @@ const BlogCard = () => {
                   className='w-9 h-9 rounded-full'
                />
                <div className='leading-3'>
-                  <h5 className='text-sm'>Zwel Htet Yan</h5>
-                  <time className='text-xs'>3h ago</time>
+                  <h5 className='text-sm'>{author}</h5>
+                  <time className='text-xs'>
+                     {formatDistanceToNow(new Date(createdAt), {
+                        addSuffix: true,
+                     })}
+                  </time>
                </div>
             </div>
          </div>

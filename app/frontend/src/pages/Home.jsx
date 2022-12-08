@@ -7,12 +7,14 @@ const Home = () => {
       axios.get('http://localhost:3000/blogs').then(({ data }) => data)
    );
 
+   if (isLoading) return 'loading...';
+
    console.log(blogs);
 
    return (
       <div className='grid xs:grid-cols-autoFit300 gap-4 xs:gap-6'>
-         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-            <BlogCard key={n} />
+         {blogs.map((blog) => (
+            <BlogCard {...blog} key={blog._id} />
          ))}
       </div>
    );

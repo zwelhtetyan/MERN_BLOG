@@ -9,6 +9,8 @@
    --textColor: #424242;
    --primary: #4bb790;
    --cardBg: '#ffffff';
+   --tagBg: #d3d1d1;
+   color-scheme: light;
 }
 
 .dark {
@@ -18,6 +20,8 @@
    --textColor: #dddddd;
    --primary: #69dfb5;
    --cardBg: #363535;
+   --tagBg: #4e4b4b;
+   color-scheme: dark;
 }
 
 @layer utilities {
@@ -27,4 +31,20 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
    }
+}
+
+/* --------custom scrollbar ------------ */
+
+::-webkit-scrollbar {
+   width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: #4bb790;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #3f9e7b;
 }

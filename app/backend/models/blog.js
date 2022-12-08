@@ -9,7 +9,7 @@ const blogSchema = new Schema(
          required: true,
       },
       tags: {
-         type: [{ tagName: String, color: String }],
+         type: [String],
          validate: (tags) => Array.isArray(tags) && tags.length > 0,
       },
       body: {
