@@ -9,8 +9,6 @@ const Home = () => {
 
    if (isLoading) return 'loading...';
 
-   console.log(blogs);
-
    return (
       <div className='grid xs:grid-cols-autoFit300 gap-4'>
          {blogs.map((blog) => (

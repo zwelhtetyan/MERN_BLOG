@@ -1,11 +1,15 @@
 import { useRef, useState, useEffect } from 'react';
 import useClickOutside from '../../hooks/useClickOutside';
 import tagSuggestions from '../tagSuggestions.json';
+import { useMutation } from 'react-query';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
+//styles
 const focusOutlineStyle =
    'outline-none outline-1 outline-offset-0 focus:outline-primary';
 
-// Sgt => Suggestion;
+//Note: Sgt => Suggestion;
 
 const SGT = ({
    tagName,
@@ -70,6 +74,9 @@ const Create = () => {
    // hooks
    const { isOutside: outsideOfSgtInput, ref: sgtInputRef } = useClickOutside();
    const { isOutside: outsideOfSgtBox, ref: sgtBoxRef } = useClickOutside();
+
+   // router
+   const navigate = useNavigate();
 
    const handleTagSgt = (e) => {
       const searchTerm = e.target.value.trim();
@@ -188,19 +195,33 @@ const Create = () => {
       setCurrentIdx(-1);
    }, [availableTags.length]);
 
+   // ============= handle Submit ==============
+
+   const { mutate, isLoading, isSuccess, isError } = useMutation((newBlog) =>
+      axios.post('http://localhost:3000/blogs', newBlog)
+   );
+
    const handleSubmit = () => {
       const title = titleRef.current.value;
       const tags = selectedTags;
       const body = bodyRef.current.value;
 
       const newBlog = { title, tags, body };
-
-      console.log(newBlog);
+      mutate(newBlog);
    };
+
+   if (isLoading) return 'loading...';
+
+   if (isSuccess) {
+      navigate('/');
+   }
 
    return (
       <div className='max-w-xl w-full mx-auto'>
-         <form action='' className='w-full mt-5 relative'>
+         <form
+            className='w-full mt-5 relative'
+            onSubmit={(e) => e.preventDefault()}
+         >
             <input
                ref={titleRef}
                type='text'
@@ -210,7 +231,7 @@ const Create = () => {
             />
 
             {selectedTags.length > 0 && (
-               <small className='text-sm mb-1 text-red-500 block'>
+               <small className='text-sm mb-1 text-gray-500 dark:text-gray-400 block'>
                   double click to delete tag 🤗
                </small>
             )}
@@ -240,7 +261,9 @@ const Create = () => {
                         onBlur={handleSelectCustomTag}
                         type='text'
                         className={`bg-cardBg w-full rounded-md h-full p-2 ${focusOutlineStyle}`}
-                        placeholder='Add up to 3 tags...'
+                        placeholder={`Add up to ${
+                           3 - selectedTags.length
+                        } tags...`}
                      />
                   </li>
                )}
