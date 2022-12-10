@@ -4,7 +4,7 @@ import z from '../assets/z.jpeg';
 
 const Tag = ({ tagName }) => {
    return (
-      <div className='px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'>
+      <div className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'>
          {tagName}
       </div>
    );
