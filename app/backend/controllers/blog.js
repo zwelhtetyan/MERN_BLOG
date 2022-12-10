@@ -3,8 +3,15 @@ const Blog = require('../models/blog');
 
 // get all blogs
 const getAllBlogs = async (req, res) => {
+   const limit = req.query.limit || 5;
+   const page = req.query.page || 0;
+
    try {
-      const allBlogs = await Blog.find().sort({ createdAt: -1 });
+      const allBlogs = await Blog.find()
+         .limit(limit)
+         .skip(limit * page)
+         .sort({ createdAt: -1 });
+
       res.status(200).json(allBlogs);
    } catch (error) {
       res.status(500).json({ error: error.message });
