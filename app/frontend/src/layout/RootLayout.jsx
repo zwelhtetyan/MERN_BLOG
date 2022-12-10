@@ -1,10 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import useTheme from '../theme';
 
 const RootLayout = () => {
    const { theme, themeToggler } = useTheme();
+   const { pathname } = useLocation();
+
+   const padding = pathname.includes('blogs')
+      ? 'md:py-6 md:px-4'
+      : 'py-3 xs:py-6 px-3 xs:px-4';
 
    return (
       <div
@@ -12,7 +17,7 @@ const RootLayout = () => {
       >
          <Header theme={theme} themeToggler={themeToggler} />
 
-         <main className='pt-6 pb-12 px-3 xs:px-4 w-full max-w-7xl mx-auto'>
+         <main className={` ${padding} mb-6 w-full max-w-7xl mx-auto`}>
             <Outlet />
          </main>
 

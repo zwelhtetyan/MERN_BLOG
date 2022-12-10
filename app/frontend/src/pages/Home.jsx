@@ -9,7 +9,7 @@ const Home = () => {
 
    const getAllBlogs = ({ pageParam = 0 }) => {
       return axios
-         .get(`http://localhost:3000/blogs?limit=5&page=${pageParam}`)
+         .get(`http://localhost:3000/blogs?limit=10&page=${pageParam}`)
          .then(({ data }) => data);
    };
 

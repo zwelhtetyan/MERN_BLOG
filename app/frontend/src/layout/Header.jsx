@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo.svg';
 
 const linkStyles = (isActive) =>
    isActive ? 'text-primary' : 'hover:text-primary';
@@ -8,7 +9,7 @@ const Header = ({ theme, themeToggler }) => {
       <header className='bg-headerBg backdrop-blur-md sticky top-0 py-2 px-4 xs:px-8 sm:px-12 shadow-sm z-10'>
          <div className='flex items-center justify-between flex-wrap'>
             <NavLink to='/' className='mr-4'>
-               <img src='logo.svg' alt='logo' width='75px' />
+               <img src={logo} alt='logo' width='75px' />
             </NavLink>
 
             <nav className='flex gap-3 xs:gap-5'>
