@@ -1,17 +1,11 @@
 import { useInfiniteQuery } from 'react-query';
-import axios from 'axios';
 import BlogCard from '../components/BlogCard';
 import { useRef, useEffect, Fragment } from 'react';
+import { getAllBlogs } from '../api';
 
 const Home = () => {
    //ref
    const loaderRef = useRef(null);
-
-   const getAllBlogs = ({ pageParam = 0 }) => {
-      return axios
-         .get(`http://localhost:3000/blogs?limit=10&page=${pageParam}`)
-         .then(({ data }) => data);
-   };
 
    const { data, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } =
       useInfiniteQuery('getAllBlogs', getAllBlogs, {
