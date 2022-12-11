@@ -13,9 +13,12 @@ const Edit = () => {
    const queryClient = useQueryClient();
 
    // get single blog
-   const { data: blog, isLoading } = useQuery(['getBlog', id], () =>
-      getBlog(id)
-   );
+   const {
+      data: blog,
+      isLoading,
+      isError,
+      error,
+   } = useQuery(['getBlog', id], () => getBlog(id));
 
    //update request
    const { mutate, isLoading: isUpdating } = useMutation(
@@ -31,6 +34,8 @@ const Edit = () => {
    const submitHandler = (updatedBlog) => mutate(updatedBlog);
 
    if (isLoading) return 'loading...';
+
+   if (isError) throw error.response.data.error;
 
    return (
       <div className='max-w-xl w-full mx-auto'>

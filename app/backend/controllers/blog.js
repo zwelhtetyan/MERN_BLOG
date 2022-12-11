@@ -23,7 +23,9 @@ const getBlog = async (req, res) => {
    const { blogId } = req.params;
 
    if (!ObjectID.isValid(blogId))
-      return res.status(404).json({ error: 'no such workout with that Id :)' });
+      return res.status(404).json({
+         error: `No such article with that Id: "${blogId}" !`,
+      });
 
    try {
       const blog = await Blog.findById({ _id: blogId });

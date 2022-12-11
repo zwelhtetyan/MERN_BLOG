@@ -56,7 +56,7 @@ const BlogForm = ({ blog, buttonText, submitHandler, loading }) => {
             ref={bodyRef}
             type='text'
             name='author'
-            className={`bg-cardBg w-full h-24 rounded-md py-2 px-4 ${focusOutlineStyle}`}
+            className={`bg-cardBg w-full h-56 rounded-md py-3 px-4 ${focusOutlineStyle}`}
             placeholder='Write your content here...'
             defaultValue={blog?.body}
          />
@@ -64,7 +64,7 @@ const BlogForm = ({ blog, buttonText, submitHandler, loading }) => {
          <button
             type='button'
             onClick={handleSubmit}
-            className='bg-primary px-5 py-2 rounded-md block mx-auto mt-3 text-white dark:text-zinc-600'
+            className='bg-primary px-5 py-2 rounded-md block mx-auto mt-3 text-white dark:text-black'
          >
             {loading || buttonText}
          </button>

@@ -10,9 +10,13 @@ const useTheme = () => {
    useEffect(() => {
       localStorage.setItem('theme', theme);
 
-      theme === 'dark'
-         ? document.documentElement.classList.add(theme)
-         : document.documentElement.classList.remove('dark');
+      if (theme === 'dark') {
+         document.documentElement.classList.add(theme);
+         document.documentElement.classList.remove('light');
+      } else {
+         document.documentElement.classList.add(theme);
+         document.documentElement.classList.remove('dark');
+      }
    }, [theme]);
 
    return { theme, themeToggler };

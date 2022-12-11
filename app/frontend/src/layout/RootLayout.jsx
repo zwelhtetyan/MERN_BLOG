@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import useTheme from '../theme';
+import ScrollTop from '../components/ScrollTop';
 
 const RootLayout = () => {
    const { theme, themeToggler } = useTheme();
@@ -22,6 +23,9 @@ const RootLayout = () => {
          </main>
 
          <Footer />
+
+         {/* scroll top ---- reset react router default behavior */}
+         <ScrollTop />
       </div>
    );
 };

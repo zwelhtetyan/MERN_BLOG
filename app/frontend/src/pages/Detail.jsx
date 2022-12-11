@@ -24,7 +24,7 @@ const Modal = ({ blog, setShowModal, handleDeleteBlog, isDeleting }) => (
             </button>
             <button
                onClick={() => setShowModal(false)}
-               className='p-2 px-4 bg-[#dcdbdb] dark:bg-tagBg hover:bg-[#d3cccc] dark:hover:bg-[#424242] duration-75 rounded-md ml-2'
+               className='p-2 px-4 bg-tagBg hover:bg-[#d3cccc] dark:hover:bg-[#424242] duration-75 rounded-md ml-2'
             >
                Cancel
             </button>
@@ -98,9 +98,12 @@ const Detail = () => {
    const navigate = useNavigate();
 
    // get single blog
-   const { data: blog, isLoading } = useQuery(['getBlog', id], () =>
-      getBlog(id)
-   );
+   const {
+      data: blog,
+      isLoading,
+      isError,
+      error,
+   } = useQuery(['getBlog', id], () => getBlog(id));
 
    // delete single blog
    const { mutate, isLoading: isDeleting } = useMutation(
@@ -115,6 +118,8 @@ const Detail = () => {
    );
 
    if (isLoading) return 'loading...';
+
+   if (isError) throw error.response.data.error;
 
    const handleDeleteBlog = () => mutate();
 
