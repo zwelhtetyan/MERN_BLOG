@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getBlog, updateBlog } from '../api';
 import BlogForm from '../components/BlogForm';
+import Loader from '../components/Loader';
 
 const Edit = () => {
    //react router dom
@@ -33,7 +34,7 @@ const Edit = () => {
 
    const submitHandler = (updatedBlog) => mutate(updatedBlog);
 
-   if (isLoading) return 'loading...';
+   if (isLoading) return <Loader />;
 
    if (isError) throw error.response.data.error;
 

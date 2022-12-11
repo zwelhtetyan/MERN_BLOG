@@ -2,6 +2,7 @@ import { useInfiniteQuery } from 'react-query';
 import BlogCard from '../components/BlogCard';
 import { useRef, useEffect, Fragment } from 'react';
 import { getAllBlogs } from '../api';
+import Loader from '../components/Loader';
 
 const Home = () => {
    //ref
@@ -35,7 +36,7 @@ const Home = () => {
       return () => observer.unobserve(loaderElem);
    }, [fetchNextPage, hasNextPage, isLoading]);
 
-   if (isLoading) return 'loading...';
+   if (isLoading) return <Loader />;
 
    return (
       <>

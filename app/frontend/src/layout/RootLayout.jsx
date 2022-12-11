@@ -18,7 +18,7 @@ const RootLayout = () => {
       >
          <Header theme={theme} themeToggler={themeToggler} />
 
-         <main className={` ${padding} mb-6 w-full max-w-7xl mx-auto`}>
+         <main className={` ${padding} mb-12 w-full max-w-7xl mx-auto`}>
             <Outlet />
          </main>
 

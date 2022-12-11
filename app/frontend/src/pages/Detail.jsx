@@ -7,6 +7,7 @@ import z from '../assets/z.jpeg';
 import Options from '../components/Options';
 import ReactDOM from 'react-dom';
 import { deleteBlog, getBlog } from '../api';
+import Loader from '../components/Loader';
 
 const Modal = ({ blog, setShowModal, handleDeleteBlog, isDeleting }) => (
    <div className='fixed w-full h-screen top-0 left-0 z-20 flex items-center justify-center bg-[#000000e0]'>
@@ -117,7 +118,7 @@ const Detail = () => {
       }
    );
 
-   if (isLoading) return 'loading...';
+   if (isLoading) return <Loader />;
 
    if (isError) throw error.response.data.error;
 
