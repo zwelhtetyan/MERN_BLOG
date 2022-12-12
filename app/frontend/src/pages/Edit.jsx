@@ -36,7 +36,7 @@ const Edit = () => {
 
    if (isLoading) return <Loader />;
 
-   if (isError) throw error.response.data.error;
+   // if (isError) throw error.response.data.error;
 
    return (
       <div className='max-w-xl w-full mx-auto'>

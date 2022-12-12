@@ -11,15 +11,17 @@ const Create = () => {
    const navigate = useNavigate();
 
    //post request
-   const { mutate, isLoading: isCreating } = useMutation(
-      (newBlog) => createBlog(newBlog),
-      {
-         onSuccess: () => {
-            queryClient.invalidateQueries('getAllBlogs');
-            navigate('/');
-         },
-      }
-   );
+   const {
+      mutate,
+      isLoading: isCreating,
+      isError,
+      error,
+   } = useMutation((newBlog) => createBlog(newBlog), {
+      onSuccess: () => {
+         queryClient.invalidateQueries('getAllBlogs');
+         navigate('/');
+      },
+   });
 
    const submitHandler = (newBlog) => mutate(newBlog);
 
@@ -29,6 +31,8 @@ const Create = () => {
             submitHandler={submitHandler}
             buttonText={'Create'}
             loading={isCreating ? 'Creating...' : null}
+            isError={isError}
+            error={error}
          />
       </div>
    );

@@ -8,13 +8,20 @@ const Home = () => {
    //ref
    const loaderRef = useRef(null);
 
-   const { data, isLoading, isFetchingNextPage, hasNextPage, fetchNextPage } =
-      useInfiniteQuery('getAllBlogs', getAllBlogs, {
-         getNextPageParam: (lastPage, pages) => {
-            const nextPage = pages.length - 1 + 1;
-            return lastPage.length ? nextPage : null;
-         },
-      });
+   const {
+      data,
+      isLoading,
+      isFetchingNextPage,
+      hasNextPage,
+      fetchNextPage,
+      isError,
+      error,
+   } = useInfiniteQuery('getAllBlogs', getAllBlogs, {
+      getNextPageParam: (lastPage, pages) => {
+         const nextPage = pages.length - 1 + 1;
+         return lastPage.length ? nextPage : null;
+      },
+   });
 
    useEffect(() => {
       if (isLoading) return;
@@ -37,6 +44,8 @@ const Home = () => {
    }, [fetchNextPage, hasNextPage, isLoading]);
 
    if (isLoading) return <Loader />;
+
+   if (isError) throw error;
 
    return (
       <>

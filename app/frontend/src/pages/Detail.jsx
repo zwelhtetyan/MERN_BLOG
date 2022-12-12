@@ -12,7 +12,7 @@ import Loader from '../components/Loader';
 const Modal = ({ blog, setShowModal, handleDeleteBlog, isDeleting }) => (
    <div className='fixed w-full h-screen top-0 left-0 z-20 flex items-center justify-center bg-[#000000e0]'>
       <div className='bg-white dark:bg-cardBg max-w-xl m-2 p-4 rounded-md w-full shadow-md'>
-         <h1 className='font-bold text-xl mb-2'>{blog.title}</h1>
+         <h1 className='font-bold text-xl mb-3 lineClamp-2'>{blog.title}</h1>
 
          <p>Are you sure you want to delete this article?</p>
 
@@ -120,7 +120,7 @@ const Detail = () => {
 
    if (isLoading) return <Loader />;
 
-   if (isError) throw error.response.data.error;
+   if (isError) throw error;
 
    const handleDeleteBlog = () => mutate();
 

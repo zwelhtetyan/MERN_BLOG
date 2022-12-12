@@ -45,6 +45,7 @@ const TagSuggestion = ({
    focusOutlineStyle,
    selectedTags,
    setSelectedTags,
+   formError,
 }) => {
    // states
    const [suggestions, setSuggestions] = useState(tagSuggestions);
@@ -194,7 +195,7 @@ const TagSuggestion = ({
             id='sgtInput'
             className={`w-full mb-3 ${
                showSgtBox ? 'rounded-t-md' : 'rounded-md'
-            } bg-cardBg p-1 px-2 flex gap-2 cursor-text flex-wrap`}
+            } bg-cardBg p-1 px-2 flex gap-2 cursor-text flex-wrap `}
             onClick={handleClickSgtInput}
             ref={sgtInputRef}
          >
@@ -215,7 +216,10 @@ const TagSuggestion = ({
                      onChange={handleTagSgt}
                      onBlur={handleSelectCustomTag}
                      type='text'
-                     className={`bg-cardBg w-full rounded-md h-full p-2 ${focusOutlineStyle}`}
+                     className={`bg-cardBg w-full rounded-md h-full p-2 ${focusOutlineStyle} ${
+                        formError.emptyField.includes('tags') &&
+                        'outline-red-400 dark:outline-red-500'
+                     }`}
                      placeholder={`Add up to ${
                         3 - selectedTags.length
                      } tags...`}
