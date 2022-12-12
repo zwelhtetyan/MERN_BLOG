@@ -69,6 +69,26 @@ const createBlog = async (req, res) => {
 const updateBlog = async (req, res) => {
    const { blogId } = req.params;
 
+   const { title, tags, body } = req.body;
+
+   const emptyField = [];
+
+   if (!title) {
+      emptyField.push('title');
+   }
+   if (!tags.length) {
+      emptyField.push('tags');
+   }
+   if (!body) {
+      emptyField.push('body');
+   }
+
+   if (emptyField.length) {
+      return res
+         .status(400)
+         .json({ error: 'Please fill in all fields.', emptyField });
+   }
+
    try {
       const blog = await Blog.findOneAndUpdate({ _id: blogId }, req.body);
       res.status(200).json(blog);

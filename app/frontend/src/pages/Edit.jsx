@@ -22,21 +22,23 @@ const Edit = () => {
    } = useQuery(['getBlog', id], () => getBlog(id));
 
    //update request
-   const { mutate, isLoading: isUpdating } = useMutation(
-      (updatedBlog) => updateBlog(id, updatedBlog),
-      {
-         onSuccess: () => {
-            queryClient.invalidateQueries(['getBlog', id]);
-            navigate(-1);
-         },
-      }
-   );
+   const {
+      mutate,
+      isLoading: isUpdating,
+      isError: isUpdateError,
+      error: updateError,
+   } = useMutation((updatedBlog) => updateBlog(id, updatedBlog), {
+      onSuccess: () => {
+         queryClient.invalidateQueries(['getBlog', id]);
+         navigate(-1);
+      },
+   });
 
    const submitHandler = (updatedBlog) => mutate(updatedBlog);
 
    if (isLoading) return <Loader />;
 
-   // if (isError) throw error.response.data.error;
+   if (isError) throw error;
 
    return (
       <div className='max-w-xl w-full mx-auto'>
@@ -45,6 +47,8 @@ const Edit = () => {
             buttonText='Update'
             blog={blog}
             loading={isUpdating ? 'Updating...' : null}
+            isError={isUpdateError}
+            error={updateError}
          />
       </div>
    );
