@@ -3,10 +3,6 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import TagSuggestion from './TagSuggestion';
 
-//styles
-const focusOutlineStyle =
-   'outline-none outline-1 outline-offset-0 focus:outline-primary';
-
 const BlogForm = ({
    blog,
    buttonText,
@@ -41,8 +37,6 @@ const BlogForm = ({
    // handle error
    useEffect(() => {
       if (isError && error.response?.status === 400) {
-         console.log(error.response.data);
-
          setFormError({
             message: error.response.data.error,
             emptyField: error.response.data.emptyField || [],
@@ -61,7 +55,7 @@ const BlogForm = ({
             ref={titleRef}
             type='text'
             name='title'
-            className={`bg-cardBg w-full h-10 rounded-md py-2 px-4 ${focusOutlineStyle} mb-3 ${
+            className={`bg-cardBg w-full h-10 rounded-md py-2 px-4 focus-outline mb-3 ${
                formError.emptyField.includes('title') &&
                'outline-red-400 dark:outline-red-500'
             }`}
@@ -76,7 +70,6 @@ const BlogForm = ({
          )}
 
          <TagSuggestion
-            focusOutlineStyle={focusOutlineStyle}
             selectedTags={selectedTags}
             setSelectedTags={setSelectedTags}
             formError={formError}
@@ -86,7 +79,7 @@ const BlogForm = ({
             ref={bodyRef}
             type='text'
             name='author'
-            className={`bg-cardBg w-full h-56 rounded-md py-3 px-4 ${focusOutlineStyle} ${
+            className={`bg-cardBg w-full h-56 rounded-md py-3 px-4 focus-outline ${
                formError.emptyField.includes('body') &&
                'outline-red-400 dark:outline-red-500'
             }`}
@@ -95,7 +88,7 @@ const BlogForm = ({
          />
 
          {formError.message && (
-            <div className='py-3 px-6 border border-red-400 bg-red-200 dark:bg-red-400 dark:border-red-700 dark:text-black rounded-md mt-3'>
+            <div className='py-3 text-sm px-6 border border-red-400 bg-red-200 dark:bg-red-400 dark:border-red-700 dark:text-black rounded-md mt-3'>
                {formError.message}
             </div>
          )}

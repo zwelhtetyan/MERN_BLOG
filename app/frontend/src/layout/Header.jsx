@@ -1,10 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.svg';
+import { useAuthContext } from '../context/AuthContext';
 
 const linkStyles = (isActive) =>
    isActive ? 'text-primary' : 'hover:text-primary';
 
 const Header = ({ theme, themeToggler }) => {
+   const { user, dispatch } = useAuthContext();
+
+   const logoutHandler = () => {
+      localStorage.removeItem('user');
+      dispatch({ type: 'LOGOUT' });
+   };
+
    return (
       <header className='bg-headerBg backdrop-blur-md sticky top-0 py-2 px-4 xs:px-8 sm:px-12 shadow-sm z-10'>
          <div className='flex items-center justify-between flex-wrap'>
@@ -19,19 +27,32 @@ const Header = ({ theme, themeToggler }) => {
                >
                   Home
                </NavLink>
+
                <NavLink
                   to='/about'
                   className={({ isActive }) => linkStyles(isActive)}
                >
                   About
                </NavLink>
-               <NavLink
-                  to='/create'
-                  className={({ isActive }) => linkStyles(isActive)}
-               >
-                  Create
-               </NavLink>
 
+               {!user && <NavLink to='/login'>Login</NavLink>}
+
+               {user && (
+                  <NavLink
+                     to='/create'
+                     className={({ isActive }) => linkStyles(isActive)}
+                  >
+                     Create
+                  </NavLink>
+               )}
+
+               {user && (
+                  <p className='cursor-pointer' onClick={logoutHandler}>
+                     Log out
+                  </p>
+               )}
+
+               {/* theme icon */}
                <div onClick={themeToggler}>
                   {theme === 'dark' ? (
                      <svg

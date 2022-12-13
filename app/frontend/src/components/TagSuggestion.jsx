@@ -41,12 +41,7 @@ const SGT = ({ tagName, desc, onClick, idx, currentIdx, keyCode }) => {
    );
 };
 
-const TagSuggestion = ({
-   focusOutlineStyle,
-   selectedTags,
-   setSelectedTags,
-   formError,
-}) => {
+const TagSuggestion = ({ selectedTags, setSelectedTags, formError }) => {
    // states
    const [suggestions, setSuggestions] = useState(tagSuggestions);
    const [availableTags, setAvailableTags] = useState(tagSuggestions);
@@ -216,7 +211,7 @@ const TagSuggestion = ({
                      onChange={handleTagSgt}
                      onBlur={handleSelectCustomTag}
                      type='text'
-                     className={`bg-cardBg w-full rounded-md h-full p-2 ${focusOutlineStyle} ${
+                     className={`bg-cardBg w-full rounded-md h-full p-2 focus-outline ${
                         formError.emptyField.includes('tags') &&
                         'outline-red-400 dark:outline-red-500'
                      }`}

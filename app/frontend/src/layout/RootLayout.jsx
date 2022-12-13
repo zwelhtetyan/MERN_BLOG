@@ -13,9 +13,7 @@ const RootLayout = () => {
       : 'py-3 xs:py-6 px-3 xs:px-4';
 
    return (
-      <div
-         className={`min-h-screen bg-mainBg text-textColor flex flex-col  ${theme}`}
-      >
+      <div className={`min-h-screen bg-mainBg text-textColor flex flex-col`}>
          <Header theme={theme} themeToggler={themeToggler} />
 
          <main className={` ${padding} mb-12 w-full max-w-7xl mx-auto`}>
@@ -24,7 +22,7 @@ const RootLayout = () => {
 
          <Footer />
 
-         {/* scroll top ---- reset react router default behavior */}
+         {/* scroll top ---- reset react-router default behavior */}
          <ScrollTop />
       </div>
    );

@@ -25,3 +25,13 @@ export const updateBlog = (id, updateBlog) =>
 // delete blog
 export const deleteBlog = (id) =>
    axios.delete(`http://localhost:3000/blogs/${id}`);
+
+// <======================> user <======================>
+
+// signup
+export const signup = ({ email, password }) =>
+   axios.post(`http://localhost:3000/signup`, { email, password });
+
+// login
+export const login = ({ email, password }) =>
+   axios.post(`http://localhost:3000/login`, { email, password });

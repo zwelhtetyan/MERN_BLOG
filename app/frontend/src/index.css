@@ -15,7 +15,7 @@
 
 .dark {
    --mainBg: #202023;
-   --headerBg: #00000069;
+   --headerBg: #34323287;
    --borderColor: #3e3b3b;
    --textColor: #dddddd;
    --primary: #69dfb5;
@@ -30,6 +30,10 @@
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+   }
+
+   .focus-outline {
+      @apply outline-none outline-offset-0 focus:outline-primary;
    }
 }
 

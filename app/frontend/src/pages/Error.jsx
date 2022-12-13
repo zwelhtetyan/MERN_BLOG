@@ -8,11 +8,11 @@ const Error = () => {
    let errorMessage = '';
    let networkError = false;
 
-   if (error.response?.status === 404) {
-      errorMessage = error.response.data.error;
-   } else {
+   if (!error.response) {
       errorMessage = error.message;
       networkError = true;
+   } else {
+      errorMessage = error.response.data.error;
    }
 
    const handleClick = () => {

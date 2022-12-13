@@ -19,7 +19,7 @@ const userSchema = new Schema({
 // static signup methods
 userSchema.statics.singup = async function (email, password) {
    if (!email.trim() || !password.trim())
-      throw Error('All fields must be filled');
+      throw Error('All fields must be filled!');
 
    if (!validator.isEmail(email)) throw Error('Email must be a strong email');
 
@@ -39,7 +39,7 @@ userSchema.statics.singup = async function (email, password) {
 
 userSchema.statics.login = async function (email, password) {
    if (!email.trim() || !password.trim())
-      throw Error('All fields must be filled');
+      throw Error('All fields must be filled!');
 
    const user = await this.findOne({ email });
 
