@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const blogRoutes = require('./router/blog');
+const userRoutes = require('./router/user');
 
 //express app
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 
 //routes
 app.use('/blogs', blogRoutes);
+app.use(userRoutes);
 
 // connect to database
 const connect = async () => {
