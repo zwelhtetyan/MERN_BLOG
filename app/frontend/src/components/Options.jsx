@@ -140,7 +140,7 @@ export default function Option({ id, title, handleDeleteBlog, isDeleting }) {
                            <div className='mt-4'>
                               <button
                                  type='button'
-                                 className='mr-3 inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 text-white py-2 text-sm font-medium hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                                 className='mr-2 inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 text-white py-2 text-sm font-medium hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
                                  onClick={onDelete}
                               >
                                  {isDeleting ? 'Deleting...' : 'Yes, Delete'}

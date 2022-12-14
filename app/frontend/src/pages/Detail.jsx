@@ -10,7 +10,7 @@ import Option from '../components/Options';
 
 const Tag = ({ tagName }) => {
    return (
-      <div className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'>
+      <div className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm cursor-pointer'>
          {tagName}
       </div>
    );

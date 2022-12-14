@@ -1,20 +1,25 @@
 import { formatDistanceToNow } from 'date-fns';
 import cover from '../assets/cover.jpg';
 import z from '../assets/z.jpeg';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Tag = ({ tagName }) => {
    return (
-      <div className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'>
+      <div
+         onClick={(e) => e.stopPropagation()}
+         className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'
+      >
          {tagName}
       </div>
    );
 };
 
 const BlogCard = ({ tags, title, body, createdAt, _id }) => {
+   const navigate = useNavigate();
+
    return (
-      <Link
-         to={`/blogs/${_id}`}
+      <div
+         onClick={() => navigate(`/blogs/${_id}`)}
          className='bg-cardBg rounded-md overflow-hidden shadow-sm hover:shadow-md cursor-pointer'
       >
          <img src={cover} alt='cover_img' />
@@ -43,7 +48,7 @@ const BlogCard = ({ tags, title, body, createdAt, _id }) => {
                </div>
             </div>
          </div>
-      </Link>
+      </div>
    );
 };
 
