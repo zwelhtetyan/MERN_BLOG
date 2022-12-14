@@ -19,8 +19,9 @@ const Login = () => {
          onSuccess: (res) => {
             const token = res.data.token;
 
-            localStorage.setItem('user', JSON.stringify({ token }));
             dispatch({ type: 'LOGIN', payload: { token } });
+            localStorage.setItem('user', JSON.stringify({ token }));
+
             navigate('/');
          },
       }

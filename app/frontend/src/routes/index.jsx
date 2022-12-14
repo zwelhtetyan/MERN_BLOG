@@ -19,7 +19,10 @@ const useRouter = () => {
          children: [
             { index: true, element: <Home /> },
             { path: 'about', element: <About /> },
-            { path: 'create', element: <Create /> },
+            {
+               path: 'create',
+               element: user ? <Create /> : <Navigate to='/' />,
+            },
             { path: 'blogs/:id', element: <Detail /> },
             { path: 'blogs/:id/edit', element: <Edit /> },
          ],

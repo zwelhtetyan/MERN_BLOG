@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 // get all blogs
-export const getAllBlogs = async ({ pageParam = 0 }) => {
+export const getAllBlogs = async (pageParam) => {
    const response = await axios.get(
       `http://localhost:3000/blogs?limit=10&page=${pageParam}`
+      // { headers: { Authorization: `Bearer ${token}` } }
    );
    return response.data;
 };

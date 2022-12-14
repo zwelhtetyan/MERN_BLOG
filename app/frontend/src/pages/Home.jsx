@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from 'react-query';
 import BlogCard from '../components/BlogCard';
-import { useRef, useEffect, Fragment } from 'react';
+import { useRef, useEffect } from 'react';
 import { getAllBlogs } from '../api';
 import Loader from '../components/Loader';
 
@@ -16,12 +16,16 @@ const Home = () => {
       fetchNextPage,
       isError,
       error,
-   } = useInfiniteQuery('getAllBlogs', getAllBlogs, {
-      getNextPageParam: (lastPage, pages) => {
-         const nextPage = pages.length - 1 + 1;
-         return lastPage.length ? nextPage : null;
-      },
-   });
+   } = useInfiniteQuery(
+      'getAllBlogs',
+      ({ pageParam = 0 }) => getAllBlogs(pageParam),
+      {
+         getNextPageParam: (lastPage, pages) => {
+            const nextPage = pages.length - 1 + 1;
+            return lastPage.length ? nextPage : null;
+         },
+      }
+   );
 
    useEffect(() => {
       if (isLoading) return;

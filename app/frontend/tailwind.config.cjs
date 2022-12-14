@@ -20,7 +20,7 @@ module.exports = {
             textColor: 'var(--textColor)',
          },
          gridTemplateColumns: {
-            autoFit300: 'repeat( auto-fit, minmax(280px, 1fr) )',
+            autoFit300: 'repeat( auto-fill, minmax(280px, 1fr) )',
          },
       },
    },
