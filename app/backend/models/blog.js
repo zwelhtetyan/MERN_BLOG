@@ -8,6 +8,9 @@ const blogSchema = new Schema(
          type: String,
          required: true,
       },
+      coverImg: {
+         type: String,
+      },
       tags: {
          type: [String],
          validate: (tags) => Array.isArray(tags) && tags.length > 0,

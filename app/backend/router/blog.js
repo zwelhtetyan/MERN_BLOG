@@ -1,5 +1,4 @@
 const express = require('express');
-const requireAuth = require('../middleware/requireAuth');
 
 const {
    getAllBlogs,
@@ -7,15 +6,16 @@ const {
    createBlog,
    updateBlog,
    deleteBlog,
+   getPostByTag,
 } = require('../controllers/blog');
 
 const router = express.Router();
 
-// requireAuth for all blog routes
-// router.use(requireAuth);
-
 // get all blogs
 router.get('/', getAllBlogs);
+
+// get post by tag
+router.get('/tags/:tagName', getPostByTag);
 
 // get single blog
 router.get('/:blogId', getBlog);

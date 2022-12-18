@@ -7,6 +7,7 @@ import Edit from '../pages/Edit';
 import Error from '../pages/Error';
 import Login from '../pages/Login';
 import PageNotFound from '../pages/PageNotFound';
+import BlogsByTag from '../pages/BlogsByTag';
 import Signup from '../pages/Signup';
 
 const useRouter = () => {
@@ -25,6 +26,7 @@ const useRouter = () => {
             },
             { path: 'blogs/:id', element: <Detail /> },
             { path: 'blogs/:id/edit', element: <Edit /> },
+            { path: 'blogs/tags/:tagName', element: <BlogsByTag /> },
          ],
          errorElement: <Error />,
       },

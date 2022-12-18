@@ -4,8 +4,16 @@ import axios from 'axios';
 export const getAllBlogs = async (pageParam) => {
    const response = await axios.get(
       `http://localhost:3000/blogs?limit=10&page=${pageParam}`
-      // { headers: { Authorization: `Bearer ${token}` } }
    );
+   return response.data;
+};
+
+// get blog by tagname
+export const getBlogByTag = async (tagName) => {
+   const response = await axios.get(
+      `http://localhost:3000/blogs/tags/${tagName}`
+   );
+
    return response.data;
 };
 

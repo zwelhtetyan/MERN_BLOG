@@ -3,8 +3,12 @@ import BlogCard from '../components/BlogCard';
 import { useRef, useEffect } from 'react';
 import { getAllBlogs } from '../api';
 import Loader from '../components/Loader';
+import { useState } from 'react';
 
 const Home = () => {
+   //states
+   const [isVisible, setIsVisible] = useState(false);
+
    //ref
    const loaderRef = useRef(null);
 
@@ -34,9 +38,10 @@ const Home = () => {
 
       const observer = new IntersectionObserver(
          (entries) => {
-            // console.log(entries[0].isIntersecting);
-            if (entries[0].isIntersecting && hasNextPage) {
-               fetchNextPage();
+            if (entries[0].isIntersecting) {
+               setIsVisible(true);
+            } else {
+               setIsVisible(false);
             }
          },
          { threshold: 0.1 }
@@ -45,7 +50,12 @@ const Home = () => {
       observer.observe(loaderElem);
 
       return () => observer.unobserve(loaderElem);
-   }, [fetchNextPage, hasNextPage, isLoading]);
+   }, [isLoading]);
+
+   // fetching
+   if (isVisible && hasNextPage) {
+      fetchNextPage();
+   }
 
    if (isLoading) return <Loader />;
 

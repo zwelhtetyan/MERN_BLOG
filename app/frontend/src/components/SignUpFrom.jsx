@@ -32,14 +32,15 @@ const SignUpFrom = ({ isLogin, mutate, isError, error, isLoading }) => {
             className='bg-tagBg w-full h-11 rounded-md py-2 px-4 focus-outline'
          />
 
-         {isLogin && (
-            <p className='text-center mt-2 text-sm'>
-               Don't have an account?{' '}
-               <Link to='/signup' className='font-bold cursor-pointer'>
-                  Register.
-               </Link>
-            </p>
-         )}
+         <p className='text-center mt-2 text-sm'>
+            {isLogin ? `Don't have an account?` : 'Already have an account?'}{' '}
+            <Link
+               to={`/${isLogin ? 'signup' : 'login'}`}
+               className='font-bold cursor-pointer'
+            >
+               {isLogin ? 'Register.' : 'Login'}
+            </Link>
+         </p>
 
          <button className='bg-primary px-5 py-2 rounded-md block mx-auto mt-3 text-white dark:text-black'>
             {isLogin

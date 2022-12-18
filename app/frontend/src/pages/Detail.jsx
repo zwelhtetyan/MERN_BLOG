@@ -1,7 +1,6 @@
 import { formatDistanceToNow } from 'date-fns';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import cover from '../assets/cover.jpg';
 import z from '../assets/z.jpeg';
 
 import { deleteBlog, getBlog } from '../api';
@@ -9,8 +8,17 @@ import Loader from '../components/Loader';
 import Option from '../components/Options';
 
 const Tag = ({ tagName }) => {
+   const navigate = useNavigate();
+
+   const handleClickTag = () => {
+      navigate(`/blogs/tags/${tagName}`);
+   };
+
    return (
-      <div className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm cursor-pointer'>
+      <div
+         className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm cursor-pointer'
+         onClick={handleClickTag}
+      >
          {tagName}
       </div>
    );
@@ -52,11 +60,13 @@ const Detail = () => {
 
    return (
       <div className='md:max-w-2xl mx-auto md:rounded-md overflow-hidden bg-cardBg shadow-sm'>
-         <img
-            src={cover}
-            alt='cover'
-            className='w-full h-52 xs:h-64 object-cover'
-         />
+         {blog.coverImg && (
+            <img
+               src={`http://localhost:3000/images/${blog.coverImg}`}
+               alt='cover'
+               className='w-full h-56 xs:h-64 object-cover'
+            />
+         )}
 
          <div className='p-3 pb-5'>
             <div className='flex justify-between items-center'>

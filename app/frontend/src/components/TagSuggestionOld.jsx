@@ -85,14 +85,15 @@ const TagSuggestion = ({
    );
 
    const handleSelectCustomTag = useCallback(() => {
-      const customTag = tagRef.current?.value.trim();
+      const customTag = tagRef.current.value.trim();
 
       const duplicateTag = selectedTags.filter(
-         (tag) => tag.toLowerCase() === customTag?.toLowerCase()
+         (tag) => tag.toLowerCase() === customTag.toLowerCase()
       );
 
       if (customTag && !duplicateTag.length) {
          setSelectedTags((prev) => [...prev, customTag]);
+         handleClickSgtInput(); // refocus the next available input
          tagRef.current.value = '';
       }
    }, [selectedTags, setSelectedTags]);
@@ -106,6 +107,7 @@ const TagSuggestion = ({
    const handleClickSgtInput = () => {
       tagRef.current?.focus();
       setShowSgtBox(true);
+      console.log('hi');
    };
 
    //handle rearrange suggestions
@@ -122,11 +124,8 @@ const TagSuggestion = ({
    useEffect(() => {
       if (outsideOfSgtInput && outsideOfSgtBox) {
          setShowSgtBox(false);
-         handleSelectCustomTag();
-      } else {
-         //  setShowSgtBox(true);
       }
-   }, [handleSelectCustomTag, outsideOfSgtBox, outsideOfSgtInput]);
+   }, [outsideOfSgtInput, outsideOfSgtBox]);
 
    // dynamic suggestion box position
    useEffect(() => {
@@ -185,6 +184,8 @@ const TagSuggestion = ({
       showSgtBox,
    ]);
 
+   console.log({ currentIdx, showSgtBox });
+
    // clear current idex
    useEffect(() => {
       setCurrentIdx(-1);
@@ -215,6 +216,7 @@ const TagSuggestion = ({
                   <input
                      ref={tagRef}
                      onChange={handleTagSgt}
+                     // onBlur={handleSelectCustomTag}
                      type='text'
                      className={`bg-cardBg w-full rounded-md h-full p-2 focus-outline ${
                         formError.emptyField.includes('tags') &&

@@ -1,12 +1,19 @@
 import { formatDistanceToNow } from 'date-fns';
-import cover from '../assets/cover.jpg';
 import z from '../assets/z.jpeg';
 import { useNavigate } from 'react-router-dom';
+import placeholderImg from '../assets/placeholderImg.png';
 
 const Tag = ({ tagName }) => {
+   const navigate = useNavigate();
+
+   const handleClickTag = (e, tagName) => {
+      e.stopPropagation();
+      navigate(`/blogs/tags/${tagName}`);
+   };
+
    return (
       <div
-         onClick={(e) => e.stopPropagation()}
+         onClick={(e) => handleClickTag(e, tagName)}
          className='lowercase px-2 py-[3px] rounded-md bg-tagBg border-[1.5px] border-transparent hover:border-primary text-sm'
       >
          {tagName}
@@ -14,7 +21,7 @@ const Tag = ({ tagName }) => {
    );
 };
 
-const BlogCard = ({ tags, title, body, createdAt, _id }) => {
+const BlogCard = ({ tags, title, body, coverImg, createdAt, _id }) => {
    const navigate = useNavigate();
 
    return (
@@ -22,7 +29,21 @@ const BlogCard = ({ tags, title, body, createdAt, _id }) => {
          onClick={() => navigate(`/blogs/${_id}`)}
          className='bg-cardBg rounded-md overflow-hidden shadow-sm hover:shadow-md cursor-pointer'
       >
-         <img src={cover} alt='cover_img' />
+         {/* {coverImg && ( */}
+         <div>
+            <img
+               src={
+                  coverImg
+                     ? `http://localhost:3000/images/${coverImg}`
+                     : placeholderImg
+               }
+               alt='cover_img'
+               className='h-52 w-full object-cover'
+            />
+         </div>
+
+         {/* )} */}
+
          <div className='p-4'>
             <div className='flex gap-2 mb-3'>
                {tags.map((tag) => (

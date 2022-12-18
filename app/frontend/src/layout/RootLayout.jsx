@@ -8,9 +8,10 @@ const RootLayout = () => {
    const { theme, themeToggler } = useTheme();
    const { pathname } = useLocation();
 
-   const padding = pathname.includes('blogs')
-      ? 'md:py-6 md:px-4'
-      : 'py-3 xs:py-6 px-3 xs:px-4';
+   const padding =
+      pathname.includes('blogs') && !pathname.includes('blogs/tags')
+         ? 'md:py-6 md:px-4'
+         : 'py-3 xs:py-6 px-3 xs:px-4';
 
    return (
       <div className={`min-h-screen bg-mainBg text-textColor flex flex-col`}>

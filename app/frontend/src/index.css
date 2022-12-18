@@ -24,6 +24,18 @@
    color-scheme: dark;
 }
 
+@layer base {
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p {
+      @apply selection:bg-primary selection:text-black;
+   }
+}
+
 @layer utilities {
    .lineClamp-2 {
       display: -webkit-box;

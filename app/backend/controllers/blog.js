@@ -18,6 +18,21 @@ const getAllBlogs = async (req, res) => {
    }
 };
 
+// filter post by tag
+const getPostByTag = async (req, res) => {
+   const tagName = req.params.tagName;
+
+   try {
+      const allBlogs = await Blog.find({ tags: tagName });
+
+      if (!allBlogs.length) throw Error(`Couldn't find "${tagName}"`);
+
+      res.status(200).json(allBlogs);
+   } catch (error) {
+      res.status(404).json({ error: error.message });
+   }
+};
+
 // get single blog
 const getBlog = async (req, res) => {
    const { blogId } = req.params;
@@ -111,6 +126,7 @@ const deleteBlog = async (req, res) => {
 
 module.exports = {
    getAllBlogs,
+   getPostByTag,
    getBlog,
    createBlog,
    updateBlog,

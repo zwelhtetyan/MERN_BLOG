@@ -1,58 +1,58 @@
 [
    {
-      "tagName": "Programming",
+      "tagName": "programming",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Nature",
+      "tagName": "nature",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Animals",
+      "tagName": "animals",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Flowers",
+      "tagName": "flowers",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Forest",
+      "tagName": "forest",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Cities",
+      "tagName": "cities",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Hip Hop",
+      "tagName": "hip hop",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Business",
+      "tagName": "business",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Travelling",
+      "tagName": "traveling",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Sport",
+      "tagName": "sport",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Football",
+      "tagName": "football",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Dance",
+      "tagName": "dance",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Funny",
+      "tagName": "funny",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    },
    {
-      "tagName": "Meme",
+      "tagName": "meme",
       "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo maxime dignissimos soluta assumenda odio, corporis aut veniam debitis tempora, consequuntur."
    }
 ]
