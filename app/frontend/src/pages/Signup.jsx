@@ -14,13 +14,13 @@ const Signup = () => {
    // react query
    const { mutate, isLoading, isError, error } = useMutation(
       'signup',
-      ({ email, password }) => signup({ email, password }),
+      (userInfo) => signup(userInfo),
       {
          onSuccess: (res) => {
-            const token = res.data.token;
+            const { name, token } = res.data;
 
-            localStorage.setItem('user', JSON.stringify({ token }));
-            dispatch({ type: 'LOGIN', payload: { token } });
+            dispatch({ type: 'LOGIN', payload: { name, token } });
+            localStorage.setItem('user', JSON.stringify({ name, token }));
             navigate('/');
          },
       }

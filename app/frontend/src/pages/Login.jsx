@@ -17,10 +17,10 @@ const Login = () => {
       ({ email, password }) => login({ email, password }),
       {
          onSuccess: (res) => {
-            const token = res.data.token;
+            const { name, token } = res.data;
 
-            dispatch({ type: 'LOGIN', payload: { token } });
-            localStorage.setItem('user', JSON.stringify({ token }));
+            dispatch({ type: 'LOGIN', payload: { name, token } });
+            localStorage.setItem('user', JSON.stringify({ name, token }));
 
             navigate('/');
          },

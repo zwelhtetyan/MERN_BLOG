@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import TagSuggestion from './TagSuggestion';
 import axios from 'axios';
+import { useAuthContext } from '../context/AuthContext';
 
 const BlogForm = ({
    blog,
@@ -21,6 +22,11 @@ const BlogForm = ({
       emptyField: [],
    });
 
+   //hooks
+   const {
+      user: { name },
+   } = useAuthContext();
+
    //ref
    const titleRef = useRef(null);
    const bodyRef = useRef(null);
@@ -30,7 +36,7 @@ const BlogForm = ({
       const tags = selectedTags;
       const body = bodyRef.current.value;
 
-      const newBlog = { title, tags, body, coverImg: usedCvImg };
+      const newBlog = { title, tags, body, coverImg: usedCvImg, author: name };
 
       // if blog prop has value , It is pretty sure that we have to perform updating process instead of posting
 
@@ -123,6 +129,7 @@ const BlogForm = ({
 
                {(img || usedCvImg) && (
                   <button
+                     type='button'
                      onClick={handleRemoveImg}
                      className='bg-cardBg p-2 rounded-md ml-2 hover:bg-tagBg duration-200'
                   >

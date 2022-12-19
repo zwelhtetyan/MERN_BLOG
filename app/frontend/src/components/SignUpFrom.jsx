@@ -2,22 +2,34 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const SignUpFrom = ({ isLogin, mutate, isError, error, isLoading }) => {
+   // refs
+   const nameRef = useRef(null);
    const emailRef = useRef(null);
    const passwordRef = useRef(null);
 
    const handleSubmit = (e) => {
       e.preventDefault();
 
+      const name = nameRef?.current?.value;
       const email = emailRef.current.value;
       const password = passwordRef.current.value;
 
-      mutate({ email, password });
+      isLogin ? mutate({ email, password }) : mutate({ name, email, password });
    };
 
    if (isError && !error.response) throw error;
 
    return (
       <form onSubmit={handleSubmit}>
+         {!isLogin && (
+            <input
+               ref={nameRef}
+               type='text'
+               placeholder='username'
+               className='bg-tagBg w-full h-11 rounded-md py-2 px-4 focus-outline mb-4'
+            />
+         )}
+
          <input
             ref={emailRef}
             type='text'

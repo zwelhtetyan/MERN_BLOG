@@ -21,7 +21,7 @@ const Tag = ({ tagName }) => {
    );
 };
 
-const BlogCard = ({ tags, title, body, coverImg, createdAt, _id }) => {
+const BlogCard = ({ tags, title, body, author, coverImg, createdAt, _id }) => {
    const navigate = useNavigate();
 
    return (
@@ -60,7 +60,7 @@ const BlogCard = ({ tags, title, body, coverImg, createdAt, _id }) => {
                   className='w-9 h-9 rounded-full'
                />
                <div className='leading-3'>
-                  <h5 className='text-sm'>Zwel</h5>
+                  <h5 className='text-sm font-medium'>{author}</h5>
                   <time className='text-xs'>
                      {formatDistanceToNow(new Date(createdAt), {
                         addSuffix: true,

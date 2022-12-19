@@ -131,7 +131,7 @@ const TagSuggestion = ({
    // dynamic suggestion box position
    useEffect(() => {
       const sgtInput = document.getElementById('sgtInput');
-      const initialPx = selectedTags.length > 0 ? 128 : 102;
+      const initialPx = selectedTags.length > 0 ? 136 : 110;
       const topPx = initialPx + sgtInput.offsetHeight;
       const finalTopPx = hasCvImg ? topPx + 90 : topPx;
       setSgtBoxTopPx(finalTopPx);

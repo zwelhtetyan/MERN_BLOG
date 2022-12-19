@@ -38,8 +38,8 @@ export const deleteBlog = (id) =>
 // <======================> user <======================>
 
 // signup
-export const signup = ({ email, password }) =>
-   axios.post(`http://localhost:3000/signup`, { email, password });
+export const signup = (userInfo) =>
+   axios.post(`http://localhost:3000/signup`, userInfo);
 
 // login
 export const login = ({ email, password }) =>

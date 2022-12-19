@@ -6,6 +6,7 @@ import z from '../assets/z.jpeg';
 import { deleteBlog, getBlog } from '../api';
 import Loader from '../components/Loader';
 import Option from '../components/Options';
+import { useAuthContext } from '../context/AuthContext';
 
 const Tag = ({ tagName }) => {
    const navigate = useNavigate();
@@ -25,6 +26,11 @@ const Tag = ({ tagName }) => {
 };
 
 const Detail = () => {
+   //hooks
+   const {
+      user: { name },
+   } = useAuthContext();
+
    // react query
    const queryClient = useQueryClient();
 
@@ -79,7 +85,7 @@ const Detail = () => {
                   />
 
                   <div className='flex flex-col justify-center'>
-                     <h5 className='font-bold'>Zwel</h5>
+                     <h5 className='font-medium'>{blog.author}</h5>
                      <time className='text-xs'>
                         {formatDistanceToNow(new Date(blog.createdAt), {
                            addSuffix: true,
@@ -88,12 +94,14 @@ const Detail = () => {
                   </div>
                </div>
 
-               <Option
-                  id={id}
-                  title={blog.title}
-                  handleDeleteBlog={handleDeleteBlog}
-                  isDeleting={isDeleting}
-               />
+               {blog.author === name && (
+                  <Option
+                     id={id}
+                     title={blog.title}
+                     handleDeleteBlog={handleDeleteBlog}
+                     isDeleting={isDeleting}
+                  />
+               )}
             </div>
 
             <h1 className='mt-3 font-bold text-2xl'>{blog.title}</h1>
