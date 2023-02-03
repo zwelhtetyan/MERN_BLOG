@@ -68,7 +68,7 @@ const Detail = () => {
         <img
           src={`http://localhost:3000/images/${blog.coverImg}`}
           alt='cover'
-          className='w-full h-56 xs:h-64 object-cover'
+          className='w-full h-56 xs:h-72 object-cover'
         />
       )}
 
