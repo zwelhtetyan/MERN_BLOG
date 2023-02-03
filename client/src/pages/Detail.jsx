@@ -66,7 +66,7 @@ const Detail = () => {
     <div className='md:max-w-2xl mx-auto md:rounded-md overflow-hidden bg-cardBg shadow-sm'>
       {blog.coverImg && (
         <img
-          src={`http://localhost:3000/images/${blog.coverImg}`}
+          src={`https://bmern.onrender.com/images/${blog.coverImg}`}
           alt='cover'
           className='w-full h-56 xs:h-72 object-cover'
         />
